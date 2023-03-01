@@ -9,13 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <title>Calculator</title>
+    <script src="calc.js"></script>
 </head>
 <body>
     <div class="flex">
         <div class="calculatormain">
             <div class="screen">
-                <p class="screenlastnum">25 + 5 =</p>
-                <p class="screennum">30</p>
+                <p id="lastnum" class="screenlastnum"></p>
+                <p id="currentnum" class="screennum"></p>
             </div>
             <div class="buttons">
                 <p id="plus" class="buttonsf opbuttons">+</p>
@@ -24,21 +25,21 @@
                 <p id="division" class="buttonsf opbuttons">÷</p>
                 <div class="numberss">
                     <div class="number1">
-                        <p class="buttonsf numbuttons">7</p>
-                        <p class="buttonsf numbuttons">8</p>
-                        <p class="buttonsf numbuttons">9</p>
-                        <p class="buttonsf numbuttons">4</p>
-                        <p class="buttonsf numbuttons">5</p>
-                        <p class="buttonsf numbuttons">6</p>
-                        <p class="buttonsf numbuttons">1</p>
-                        <p class="buttonsf numbuttons">2</p>
-                        <p class="buttonsf numbuttons">3</p>
+                        <p id="seven" class="buttonsf numbuttons">7</p>
+                        <p id="eight" class="buttonsf numbuttons">8</p>
+                        <p id="nine" class="buttonsf numbuttons">9</p>
+                        <p id="four" class="buttonsf numbuttons">4</p>
+                        <p id="five" class="buttonsf numbuttons">5</p>
+                        <p id="six" class="buttonsf numbuttons">6</p>
+                        <p id="one" class="buttonsf numbuttons">1</p>
+                        <p id="two" class="buttonsf numbuttons">2</p>
+                        <p id="three" class="buttonsf numbuttons">3</p>
                         <p id="zero" class="buttonsf numbuttons">0</p>
-                        <p class="buttonsf numbuttons">.</p>
-                        <p class="buttonsf numbuttons">C</p>
+                        <p id="dot" class="buttonsf numbuttons">.</p>
+                        <p id="erase" class="buttonsf numbuttons">C</p>
                     </div>
                     <div class="equalsignss">
-                        <p class="buttonsf" id="equalbutt">=</p>
+                        <p class="buttonsf" id="equals">=</p>
                     </div>
                 </div>
                 

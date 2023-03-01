@@ -71,7 +71,7 @@ html, body{
     flex: none;
     font-size: 70px;
 }
-#equalbutt {
+#equals {
     color: rgb(245, 227, 238);
     font-size: 100px;
     height: 400px;
@@ -93,4 +93,9 @@ html, body{
 #mult {
     font-size: 48px;
     font-weight: bold;
+}
+.buttonsf:hover {
+    background-color: rgb(115, 11, 136);
+    box-shadow: 0 0 1px rgb(133, 10, 96);
+    cursor: pointer;
 }

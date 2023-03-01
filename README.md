@@ -1,1 +1,2 @@
 # calculatorsfl
+Personal calculator project
