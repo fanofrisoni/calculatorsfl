@@ -143,3 +143,8 @@ function opAlready (operation){
         lastNum.textContent.slice(-1)="";
     }
 };
+
+function checkSize (){
+    if (currentNum.textContent.length>10){
+    }
+};

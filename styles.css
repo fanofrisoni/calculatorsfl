@@ -37,13 +37,13 @@ html, body{
     overflow: hidden;
 }
 .screenlastnum {
-    font-size: 36px;
+    font-size: 38px;
     color: rgb(255, 220, 241);
     margin: 0;
     padding: 0;
 }
 .screennum {
-    font-size: 86px;
+    font-size: 84px;
     color: rgb(241, 231, 237);
     top: 10px;
     margin: 0 0 10px 0;
@@ -116,7 +116,7 @@ html, body{
 
 }
 
-@media (max-width: 550px) {
+@media (max-width: 700px) {
     .calculatormain {
         flex: 0 1 400px;
         height: 600px;
@@ -133,7 +133,7 @@ html, body{
         height: 352.5px;
     }
     #currentnum{
-        font-size: 72px;
+        font-size: 70px;
     }
     #lastnum{
         font-size: 32px;
@@ -161,7 +161,7 @@ html, body{
         height: 333px;
     }
     #currentnum{
-        font-size: 62px;
+        font-size: 60px;
     }
     #lastnum{
         font-size: 30px;
