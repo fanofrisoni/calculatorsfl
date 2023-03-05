@@ -100,12 +100,11 @@ html, body{
     font-weight: 600;
 }
 .buttonsf:active{
-    transform: scale(1.05);
-	transition: .05s;
+    transform: scale(1.1);
+	transition: .04s;
 }
 .buttonsf{
     transition: all .1s ease-in-out;
-    overflow: hidden;
 }
 @media (hover:hover){
     .buttonsf:hover{
