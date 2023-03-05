@@ -38,12 +38,14 @@ html, body{
     font-size: 34px;
     color: rgb(255, 220, 241);
     margin: 0;
+    padding: 0;
 }
 .screennum {
     font-size: 80px;
     color: rgb(241, 231, 237);
     top: 10px;
     margin: 0 0 10px 0;
+    padding: 0;
     right: 10px;
 }
 .buttons {
