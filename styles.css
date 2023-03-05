@@ -5,6 +5,7 @@ html, body{
     margin: 0;
     padding: 0;
     height: 100%;
+    min-width: 360px;
 }
 .flex {
     background-image: linear-gradient(90deg, rgba(157, 145, 226, 0.336), rgba(238, 171, 227, 0.747));
@@ -26,24 +27,23 @@ html, body{
     height: 180px;
     background-image: linear-gradient(90deg, rgba(136, 125, 197, 0.452), rgba(170, 82, 155, 0.678));
     display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-end;
     padding: 0 20px 0 20px;
     border-radius: 10px 10px 0 0;
 }
 .screenlastnum {
     font-size: 36px;
     color: rgb(255, 220, 241);
-    position: relative;
-    bottom: 60px;
-    left: 85px;
+    margin: 0;
 }
 .screennum {
     font-size: 90px;
     color: rgb(241, 231, 237);
-    position: relative;
     top: 10px;
+    margin: 0 0 10px 0;
     right: 10px;
 }
 .buttons {
@@ -91,11 +91,67 @@ html, body{
 }
 
 #mult {
-    font-size: 48px;
-    font-weight: bold;
+    font-size: 44px;
+    font-weight: 600;
 }
 .buttonsf:hover {
     background-color: rgb(115, 11, 136);
     box-shadow: 0 0 1px rgb(133, 10, 96);
     cursor: pointer;
 }
+
+@media (max-width: 550px) {
+    .calculatormain {
+        flex: 0 1 400px;
+        height: 600px;
+    }
+    .screen {
+        height: 160px;
+    }
+    .buttonsf {
+        font-size: 60px;
+        width: 100px;
+        height: 88px;
+    }
+    #equals {
+        height: 352px;
+    }
+    #currentnum{
+        font-size: 70px;
+    }
+    #lastnum{
+        font-size: 30px;
+    }
+    #mult {
+        font-size: 40px;
+        font-weight: 300;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .calculatormain {
+        flex: 0 1 350px;
+        height: 560px;
+    }
+    .screen {
+        height: 150px;
+    }
+    .buttonsf {
+        font-size: 48px;
+        width: 87.5px;
+        height: 83px;
+    }
+    #equals {
+        height: 333px;
+    }
+    #currentnum{
+        font-size: 70px;
+    }
+    #lastnum{
+        font-size: 30px;
+    }
+    #mult {
+        font-size: 36px;
+        font-weight: 300;
+    }
+  }
