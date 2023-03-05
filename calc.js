@@ -1,4 +1,5 @@
 const numberButtons = document.querySelectorAll(".numbuttons");
+const dotButton = document.querySelector(".dotbutton");
 const currentNum = document.querySelector("#currentnum");
 const lastNum = document.querySelector("#lastnum");
 const clearButton = document.querySelector("#erase");
@@ -14,9 +15,23 @@ let currentOp = "";
 numberButtons.forEach((numbutton) => {
     numbutton.addEventListener('click',() => {
         clearAfterNum();
-        if (currentNum.textContent==="0") {currentNum.textContent=""}
+        checkSize();
+        if (currentNum.textContent==="0") {currentNum.textContent=""};
         currentNum.textContent += numbutton.textContent;
+        if (currentNum.textContent.length>9){
+            alert("Max 8 digits per entry! Thanks!");
+            currentNum.textContent="0";
+        }
     })
+    
+});
+
+dotButton.addEventListener('click',() => {
+    clearAfterDot();
+    checkSize();
+    if (currentNum.textContent==="0") {currentNum.textContent="0."} else{
+        currentNum.textContent += dotButton.textContent;
+    }
 });
 
 clearButton.addEventListener('click',() => {
@@ -24,9 +39,12 @@ clearButton.addEventListener('click',() => {
     lastNum.textContent = "";
     currentSum=0.0;
     currentOp = "";
+    checkSize();
 });
 
 plusButton.addEventListener('click',() => {
+    checkSize();
+    opAlready("+");
     clearAfter();
     calculate(currentOp);
     currentOp = "+";
@@ -36,6 +54,8 @@ plusButton.addEventListener('click',() => {
 });
 
 minusButton.addEventListener('click',() => {
+    checkSize();
+    opAlready("-");
     clearAfter();
     calculate(currentOp);
     currentOp = "-";
@@ -45,6 +65,8 @@ minusButton.addEventListener('click',() => {
 });
 
 multButton.addEventListener('click',() => {
+    checkSize();
+    opAlready("x");
     clearAfter();
     calculate(currentOp);
     currentOp = "x";
@@ -54,6 +76,8 @@ multButton.addEventListener('click',() => {
 });
 
 divButton.addEventListener('click',() => {
+    checkSize();
+    opAlready("÷");
     clearAfter();
     calculate(currentOp);
     currentOp = "/";
@@ -63,34 +87,41 @@ divButton.addEventListener('click',() => {
 });
 
 equalsButton.addEventListener('click',() => {
+    opAlready("=");
     lastNum.textContent += currentNum.textContent;
     lastNum.textContent += "=";
     calculate(currentOp);
     currentOp = "";
     currentNum.textContent = currentSum;
-
+    if (currentNum.textContent.length>16){
+        alert("Number is TOO big!");
+        lastNum.textContent = "";
+        currentNum.textContent = "0";
+        currentSum = 0;
+        currentOp = "";
+    }
+    checkSize();
 });
+
 
 function calculate (operation) {
     let newNumber = parseFloat(currentNum.textContent);
-    console.log(currentOp);
-    console.log(newNumber);
     switch (operation){
         case "+":
-            currentSum = currentSum + newNumber;
+            currentSum = Math.round((currentSum + newNumber)*1000)/1000;
             break;
         case "-":
-            currentSum = currentSum - newNumber;
+            currentSum = Math.round((currentSum - newNumber)*1000)/1000;
             break;
         case "x":
-            currentSum = currentSum * newNumber;
+            currentSum = Math.round((currentSum * newNumber)*1000)/1000;
             break;
         case "/":
-            currentSum = Math.round((currentSum / newNumber)*10)/10;
+            currentSum = Math.round((currentSum / newNumber)*1000)/1000;
             break;
         default: currentSum = newNumber;
     }
-    console.log("total=" + currentSum);
+    checkSize();
 };
 
 function clearAfterNum (){
@@ -101,9 +132,39 @@ function clearAfterNum (){
         currentOp = "";
     }
 };
+function clearAfterDot (){
+    if (lastNum.textContent.includes("=")){
+        lastNum.textContent = "";
+        currentNum.textContent = "0";
+        currentSum = 0;
+        currentOp = "";
+    }
+};
 
 function clearAfter (){
     if (lastNum.textContent.includes("=")){
         lastNum.textContent = lastNum.textContent.split("=").pop();
     }
 };
+
+function opAlready (operation){
+    if(lastNum.textContent.slice(-1)==operation){
+        lastNum.textContent.slice(-1)="";
+    }
+};
+
+function checkSize (){
+    if (currentNum.textContent.length>14){
+        currentNum.style.fontSize = "45px";
+        lastNum.style.fontSize = "42px";
+    } else if (currentNum.textContent.length>11){
+        currentNum.style.fontSize = "56px";
+        lastNum.style.fontSize = "40px";
+    } else if (currentNum.textContent.length>8){
+        currentNum.style.fontSize = "72px";
+        lastNum.style.fontSize = "38px";
+    } else {
+        currentNum.style.fontSize = "90px";
+        lastNum.style.fontSize = "36px";
+    }
+}
