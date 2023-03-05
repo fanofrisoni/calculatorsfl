@@ -22,6 +22,7 @@ html, body{
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 .screen {
     height: 180px;
