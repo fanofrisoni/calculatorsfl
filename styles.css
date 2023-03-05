@@ -37,13 +37,13 @@ html, body{
     overflow: hidden;
 }
 .screenlastnum {
-    font-size: 34px;
+    font-size: 36px;
     color: rgb(255, 220, 241);
     margin: 0;
     padding: 0;
 }
 .screennum {
-    font-size: 80px;
+    font-size: 86px;
     color: rgb(241, 231, 237);
     top: 10px;
     margin: 0 0 10px 0;
@@ -133,10 +133,10 @@ html, body{
         height: 352.5px;
     }
     #currentnum{
-        font-size: 68px;
+        font-size: 72px;
     }
     #lastnum{
-        font-size: 30px;
+        font-size: 32px;
     }
     #mult {
         font-size: 40px;
@@ -161,10 +161,10 @@ html, body{
         height: 333px;
     }
     #currentnum{
-        font-size: 60px;
+        font-size: 62px;
     }
     #lastnum{
-        font-size: 28px;
+        font-size: 30px;
     }
     #mult {
         font-size: 36px;

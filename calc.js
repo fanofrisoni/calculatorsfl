@@ -86,7 +86,7 @@ equalsButton.addEventListener('click',() => {
     calculate(currentOp);
     currentOp = "";
     currentNum.textContent = currentSum;
-    if (currentNum.textContent.length>16){
+    if (currentNum.textContent.length>14){
         alert("Number is TOO big!");
         lastNum.textContent = "";
         currentNum.textContent = "0";
