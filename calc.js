@@ -15,7 +15,6 @@ let currentOp = "";
 numberButtons.forEach((numbutton) => {
     numbutton.addEventListener('click',() => {
         clearAfterNum();
-        checkSize();
         if (currentNum.textContent==="0") {currentNum.textContent=""};
         currentNum.textContent += numbutton.textContent;
         if (currentNum.textContent.length>9){
@@ -28,7 +27,6 @@ numberButtons.forEach((numbutton) => {
 
 dotButton.addEventListener('click',() => {
     clearAfterDot();
-    checkSize();
     if (currentNum.textContent==="0") {currentNum.textContent="0."} else{
         currentNum.textContent += dotButton.textContent;
     }
@@ -39,11 +37,9 @@ clearButton.addEventListener('click',() => {
     lastNum.textContent = "";
     currentSum=0.0;
     currentOp = "";
-    checkSize();
 });
 
 plusButton.addEventListener('click',() => {
-    checkSize();
     opAlready("+");
     clearAfter();
     calculate(currentOp);
@@ -54,7 +50,6 @@ plusButton.addEventListener('click',() => {
 });
 
 minusButton.addEventListener('click',() => {
-    checkSize();
     opAlready("-");
     clearAfter();
     calculate(currentOp);
@@ -65,7 +60,6 @@ minusButton.addEventListener('click',() => {
 });
 
 multButton.addEventListener('click',() => {
-    checkSize();
     opAlready("x");
     clearAfter();
     calculate(currentOp);
@@ -76,7 +70,6 @@ multButton.addEventListener('click',() => {
 });
 
 divButton.addEventListener('click',() => {
-    checkSize();
     opAlready("÷");
     clearAfter();
     calculate(currentOp);
@@ -100,7 +93,6 @@ equalsButton.addEventListener('click',() => {
         currentSum = 0;
         currentOp = "";
     }
-    checkSize();
 });
 
 
@@ -121,7 +113,6 @@ function calculate (operation) {
             break;
         default: currentSum = newNumber;
     }
-    checkSize();
 };
 
 function clearAfterNum (){
@@ -152,19 +143,3 @@ function opAlready (operation){
         lastNum.textContent.slice(-1)="";
     }
 };
-
-function checkSize (){
-    if (currentNum.textContent.length>14){
-        currentNum.style.fontSize = "45px";
-        lastNum.style.fontSize = "42px";
-    } else if (currentNum.textContent.length>11){
-        currentNum.style.fontSize = "56px";
-        lastNum.style.fontSize = "40px";
-    } else if (currentNum.textContent.length>8){
-        currentNum.style.fontSize = "72px";
-        lastNum.style.fontSize = "38px";
-    } else {
-        currentNum.style.fontSize = "90px";
-        lastNum.style.fontSize = "36px";
-    }
-}

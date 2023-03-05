@@ -94,10 +94,20 @@ html, body{
     font-size: 44px;
     font-weight: 600;
 }
-.buttonsf:hover {
-    background-color: rgb(115, 11, 136);
-    box-shadow: 0 0 1px rgb(133, 10, 96);
-    cursor: pointer;
+.buttonsf:active{
+    transform: scale(1.05);
+	transition: .05s;
+}
+.buttonsf{
+    transition: all .1s ease-in-out;
+}
+@media (hover:hover){
+    .buttonsf:hover{
+        background-color: rgb(115, 11, 136);
+        box-shadow: 0 0 1px rgb(133, 10, 96);
+        cursor: pointer;
+}
+
 }
 
 @media (max-width: 550px) {
@@ -114,7 +124,7 @@ html, body{
         height: 88px;
     }
     #equals {
-        height: 352px;
+        height: 352.5px;
     }
     #currentnum{
         font-size: 70px;
@@ -145,10 +155,10 @@ html, body{
         height: 333px;
     }
     #currentnum{
-        font-size: 70px;
+        font-size: 60px;
     }
     #lastnum{
-        font-size: 30px;
+        font-size: 28px;
     }
     #mult {
         font-size: 36px;
