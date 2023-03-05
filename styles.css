@@ -43,7 +43,7 @@ html, body{
     padding: 0;
 }
 .screennum {
-    font-size: 84px;
+    font-size: 88px;
     color: rgb(241, 231, 237);
     top: 10px;
     margin: 0 0 10px 0;
@@ -132,10 +132,10 @@ html, body{
         height: 352.5px;
     }
     #currentnum{
-        font-size: 70px;
+        font-size: 74px;
     }
     #lastnum{
-        font-size: 32px;
+        font-size: 34px;
     }
     #mult {
         font-size: 40px;
@@ -160,10 +160,10 @@ html, body{
         height: 333px;
     }
     #currentnum{
-        font-size: 60px;
+        font-size: 66px;
     }
     #lastnum{
-        font-size: 30px;
+        font-size: 32px;
     }
     #mult {
         font-size: 36px;

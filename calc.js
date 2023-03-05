@@ -17,8 +17,8 @@ numberButtons.forEach((numbutton) => {
         clearAfterNum();
         if (currentNum.textContent==="0") {currentNum.textContent=""};
         currentNum.textContent += numbutton.textContent;
-        if (currentNum.textContent.length>9){
-            alert("Max 8 digits per entry! Thanks!");
+        if (currentNum.textContent.length>8){
+            alert("Max 7 digits per entry! Thanks!");
             currentNum.textContent="0";
         }
     })
@@ -86,7 +86,7 @@ equalsButton.addEventListener('click',() => {
     calculate(currentOp);
     currentOp = "";
     currentNum.textContent = currentSum;
-    if (currentNum.textContent.length>14){
+    if (currentNum.textContent.length>10){
         alert("Number is TOO big!");
         lastNum.textContent = "";
         currentNum.textContent = "0";
