@@ -10,10 +10,12 @@ const divButton = document.querySelector("#division");
 const equalsButton = document.querySelector("#equals");
 let currentSum = 0.0;
 let currentOp = "";
-
+let currentEqual = false;
+let newNumber;
 
 numberButtons.forEach((numbutton) => {
     numbutton.addEventListener('click',() => {
+        currentEqual=false;
         clearAfterNum();
         if (currentNum.textContent==="0") {currentNum.textContent=""};
         currentNum.textContent += numbutton.textContent;
@@ -26,6 +28,7 @@ numberButtons.forEach((numbutton) => {
 });
 
 dotButton.addEventListener('click',() => {
+    currentEqual=false;
     clearAfterDot();
     if (currentNum.textContent==="0") {currentNum.textContent="0."} else{
         currentNum.textContent += dotButton.textContent;
@@ -33,6 +36,7 @@ dotButton.addEventListener('click',() => {
 });
 
 clearButton.addEventListener('click',() => {
+    currentEqual=false;
     currentNum.textContent = "0";
     lastNum.textContent = "";
     currentSum=0.0;
@@ -40,64 +44,99 @@ clearButton.addEventListener('click',() => {
 });
 
 plusButton.addEventListener('click',() => {
-    opAlready("+");
+    if (currentEqual){
+        currentOp = "";
+    }
+    currentEqual=false;
     clearAfter();
     calculate(currentOp);
     currentOp = "+";
     currentNum.textContent += "+";
     lastNum.textContent += currentNum.textContent;
     currentNum.textContent = "0";
+    opAlready("+");
 });
 
 minusButton.addEventListener('click',() => {
-    opAlready("-");
+    if (currentEqual){
+        currentOp = "";
+    }
+    currentEqual=false;
+    
     clearAfter();
     calculate(currentOp);
+    
     currentOp = "-";
     currentNum.textContent += "-";
     lastNum.textContent += currentNum.textContent;
     currentNum.textContent = "0";
+    opAlready("-");
+    
 });
 
 multButton.addEventListener('click',() => {
-    opAlready("x");
+    if (currentEqual){
+        currentOp = "";
+    }
+    currentEqual=false;
     clearAfter();
     calculate(currentOp);
     currentOp = "x";
     currentNum.textContent += "x";
     lastNum.textContent += currentNum.textContent;
     currentNum.textContent = "0";
+    opAlready("x");
 });
 
 divButton.addEventListener('click',() => {
-    opAlready("÷");
+    if (currentEqual){
+        currentOp = "";
+    }
+    currentEqual=false;
     clearAfter();
     calculate(currentOp);
     currentOp = "/";
     currentNum.textContent += "÷";
     lastNum.textContent += currentNum.textContent;
     currentNum.textContent = "0";
+    opAlready("÷");
 });
 
 equalsButton.addEventListener('click',() => {
-    opAlready("=");
-    lastNum.textContent += currentNum.textContent;
-    lastNum.textContent += "=";
-    calculate(currentOp);
-    currentOp = "";
-    currentNum.textContent = currentSum;
-    if (currentNum.textContent.length>10){
-        alert("Number is TOO big!");
-        lastNum.textContent = "";
-        currentNum.textContent = "0";
-        currentSum = 0;
-        currentOp = "";
+    if (currentEqual && currentOp!==""){
+        opAlready("=");
+        lastNum.textContent = currentSum + currentOp + newNumber + '=';
+        calculateLast(currentOp);
+        currentNum.textContent = currentSum;
+        if (currentNum.textContent.length>=9){
+            alert("Number is TOO big!");
+            lastNum.textContent = "";
+            currentNum.textContent = "0";
+            currentSum = 0;
+            currentOp = "";
+        }
+    } else {
+        opAlready("=");
+        lastNum.textContent += currentNum.textContent;
+        lastNum.textContent += "=";
+        calculate(currentOp);
+        currentNum.textContent = currentSum;
+        if (currentNum.textContent.length>=9){
+            alert("Number is TOO big!");
+            lastNum.textContent = "";
+            currentNum.textContent = "0";
+            currentSum = 0;
+            currentOp = "";
+        }
+        currentEqual=true;
     }
+    
 });
 
 
 function calculate (operation) {
-    let newNumber = parseFloat(currentNum.textContent);
+    newNumber = parseFloat(currentNum.textContent);
+    
     switch (operation){
         case "+":
             currentSum = Math.round((currentSum + newNumber)*1000)/1000;
@@ -140,11 +179,31 @@ function clearAfter (){
 
 function opAlready (operation){
     if(lastNum.textContent.slice(-1)==operation){
-        lastNum.textContent.slice(-1)="";
+        lastNum.textContent = lastNum.textContent.replace(/\d=/g,"");
+        lastNum.textContent = currentSum + operation;
+        console.log(lastNum.textContent);
     }
 };
 
 function checkSize (){
     if (currentNum.textContent.length>10){
+    }
+};
+
+function calculateLast (operation) {
+    switch (operation){
+        case "+":
+            currentSum = Math.round((currentSum + newNumber)*1000)/1000;
+            break;
+        case "-":
+            currentSum = Math.round((currentSum - newNumber)*1000)/1000;
+            break;
+        case "x":
+            currentSum = Math.round((currentSum * newNumber)*1000)/1000;
+            break;
+        case "/":
+            currentSum = Math.round((currentSum / newNumber)*1000)/1000;
+            break;
+        default: currentSum = newNumber;
     }
 };
