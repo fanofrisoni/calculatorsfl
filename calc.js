@@ -17,11 +17,10 @@ numberButtons.forEach((numbutton) => {
     numbutton.addEventListener('click',() => {
         currentEqual=false;
         clearAfterNum();
-        if (currentNum.textContent==="0") {currentNum.textContent=""};
-        currentNum.textContent += numbutton.textContent;
-        if (currentNum.textContent.length>8){
-            alert("Max 7 digits per entry! Thanks!");
-            currentNum.textContent="0";
+        if (currentNum.textContent==="0") {
+            currentNum.textContent=""};
+        if (currentNum.textContent.length<10){
+            currentNum.textContent += numbutton.textContent;
         }
     })
     
@@ -30,7 +29,9 @@ numberButtons.forEach((numbutton) => {
 dotButton.addEventListener('click',() => {
     currentEqual=false;
     clearAfterDot();
-    if (currentNum.textContent==="0") {currentNum.textContent="0."} else{
+    if (currentNum.textContent==="0") {
+        currentNum.textContent="0."
+    } else if(currentNum.textContent.includes('.')===false) {
         currentNum.textContent += dotButton.textContent;
     }
 });
@@ -103,12 +104,13 @@ divButton.addEventListener('click',() => {
 });
 
 equalsButton.addEventListener('click',() => {
-    if (currentEqual && currentOp!==""){
-        opAlready("=");
-        lastNum.textContent = currentSum + currentOp + newNumber + '=';
+    console.log(currentEqual);
+    if (currentEqual && currentOp!="" && currentSum!=0){
+        console.log('holaa');
+        lastNum.textContent = currentSum + currentOp + newNumber + "=";
         calculateLast(currentOp);
         currentNum.textContent = currentSum;
-        if (currentNum.textContent.length>=9){
+        if (currentNum.textContent.length>9){
             alert("Number is TOO big!");
             lastNum.textContent = "";
             currentNum.textContent = "0";
@@ -119,9 +121,11 @@ equalsButton.addEventListener('click',() => {
         opAlready("=");
         lastNum.textContent += currentNum.textContent;
         lastNum.textContent += "=";
+        
         calculate(currentOp);
+        
         currentNum.textContent = currentSum;
-        if (currentNum.textContent.length>=9){
+        if (currentNum.textContent.length>9){
             alert("Number is TOO big!");
             lastNum.textContent = "";
             currentNum.textContent = "0";
@@ -185,10 +189,6 @@ function opAlready (operation){
     }
 };
 
-function checkSize (){
-    if (currentNum.textContent.length>10){
-    }
-};
 
 function calculateLast (operation) {
     switch (operation){
